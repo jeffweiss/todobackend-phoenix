@@ -28,7 +28,7 @@ defmodule Todobackend.TodoController do
     render conn, "show.json", todo: todo
   end
 
-  def update(conn, %{"id" => id, "todo" => todo_params}) do
+  def update(conn, todo_params = %{"id" => id}) do
     todo = Repo.get(Todo, id)
     changeset = Todo.changeset(todo, todo_params)
 
@@ -58,6 +58,6 @@ defmodule Todobackend.TodoController do
 
   def options(conn, _params) do
     conn
-    |> send_resp(200, "GET,HEAD,POST,DELETE,OPTIONS,PUT")
+    |> send_resp(200, "GET,POST,DELETE,OPTIONS,PUT")
   end
 end
