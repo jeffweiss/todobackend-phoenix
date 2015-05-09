@@ -11,7 +11,7 @@ defmodule Todobackend.TodoController do
     render(conn, "index.json", todos: todos)
   end
 
-  def create(conn, %{"todo" => todo_params}) do
+  def create(conn, todo_params) do
     changeset = Todo.changeset(%Todo{}, todo_params)
 
     if changeset.valid? do
