@@ -3,9 +3,8 @@ defmodule Todobackend.Repo.Migrations.CreateTodo do
 
   def change do
     create table(:todos) do
-      add :uid, :string
       add :title, :string
-      add :order, :integer
+      add :order, :integer, default: 0
       add :completed, :boolean, default: false
 
       timestamps
