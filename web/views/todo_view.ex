@@ -10,6 +10,6 @@ defmodule Todobackend.TodoView do
   end
 
   def render("todo.json", %{todo: todo}) do
-    %{id: todo.id}
+    todo
   end
 end
