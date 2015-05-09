@@ -3,7 +3,6 @@ defmodule Todobackend.TodoController do
 
   alias Todobackend.Todo
 
-  plug :scrub_params, "todo" when action in [:create, :update]
   plug :action
 
   def index(conn, _params) do
