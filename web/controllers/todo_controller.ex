@@ -49,6 +49,13 @@ defmodule Todobackend.TodoController do
     render(conn, "show.json", todo: todo)
   end
 
+  def delete_all(conn, _params) do
+    Repo.delete_all(Todo)
+
+    todos = Repo.all(Todo)
+    render(conn, "index.json", todos: todos)
+  end
+
   def options(conn, _params) do
     conn
     |> send_resp(200, "GET,HEAD,POST,DELETE,OPTIONS,PUT")

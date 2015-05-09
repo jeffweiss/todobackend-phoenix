@@ -24,6 +24,7 @@ defmodule Todobackend.Router do
     pipe_through :api
     resources "/todos", TodoController
     options "/todos", TodoController, :options
+    delete "/todos", TodoController, :delete_all
   end
 
   def cors(conn, _opts) do
