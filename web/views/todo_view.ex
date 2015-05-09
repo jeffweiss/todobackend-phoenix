@@ -14,7 +14,7 @@ defmodule Todobackend.TodoView do
       title: todo.title,
       order: todo.order,
       completed: todo.completed,
-      url: todo_path(@conn, todo),
+      url: todo_path(Todobackend.Endpoint, :show, todo),
     }
   end
 end
