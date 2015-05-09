@@ -23,6 +23,7 @@ defmodule Todobackend.Router do
   scope "/api", Todobackend do
     pipe_through :api
     resources "/todos", TodoController
+    options "/todos", TodoController, :options
   end
 
   def cors(conn, _opts) do
