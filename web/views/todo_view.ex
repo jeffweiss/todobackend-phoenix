@@ -10,6 +10,11 @@ defmodule Todobackend.TodoView do
   end
 
   def render("todo.json", %{todo: todo}) do
-    todo
+    %{id: todo.id,
+      title: todo.title,
+      order: todo.order,
+      completed: todo.completed,
+      url: todo_path(@conn, todo),
+    }
   end
 end
