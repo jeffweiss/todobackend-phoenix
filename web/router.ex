@@ -29,6 +29,6 @@ defmodule Todobackend.Router do
   def cors(conn, _opts) do
     conn
     |> put_resp_header("access-control-allow-origin", "*")
-    |> put_resp_header("access-control-allow-headers", "content-type")
+    |> put_resp_header("access-control-allow-headers", "Content-Type")
   end
 end
