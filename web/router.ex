@@ -19,7 +19,8 @@ defmodule Todobackend.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Todobackend do
-  #   pipe_through :api
-  # end
+  scope "/api", Todobackend do
+    pipe_through :api
+    resources "/todos", TodoController
+  end
 end
