@@ -31,5 +31,6 @@ defmodule Todobackend.Router do
     conn
     |> put_resp_header("access-control-allow-origin", "*")
     |> put_resp_header("access-control-allow-headers", "Content-Type")
+    |> put_resp_header("Access-Control-Allow-Methods", "GET,PUT,PATCH,OPTIONS,DELETE,POST")
   end
 end
