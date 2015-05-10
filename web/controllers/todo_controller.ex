@@ -3,7 +3,7 @@ defmodule Todobackend.TodoController do
 
   alias Todobackend.Todo
 
-  plug :scrub_params, "todo" when action in [:create, :update]
+  # plug :scrub_params, "todo" when action in [:create, :update]
   plug :action
 
   def index(conn, _params) do
@@ -11,7 +11,7 @@ defmodule Todobackend.TodoController do
     render(conn, "index.json", todos: todos)
   end
 
-  def create(conn, %{"todo" => todo_params}) do
+  def create(conn, todo_params) do
     changeset = Todo.changeset(%Todo{}, todo_params)
 
     if changeset.valid? do
@@ -29,7 +29,7 @@ defmodule Todobackend.TodoController do
     render conn, "show.json", todo: todo
   end
 
-  def update(conn, %{"id" => id, "todo" => todo_params}) do
+  def update(conn, todo_params = %{"id" => id}) do
     todo = Repo.get(Todo, id)
     changeset = Todo.changeset(todo, todo_params)
 

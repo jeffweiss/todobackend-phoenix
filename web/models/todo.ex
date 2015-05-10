@@ -9,8 +9,8 @@ defmodule Todobackend.Todo do
     timestamps
   end
 
-  @required_fields ~w(title order completed)
-  @optional_fields ~w()
+  @required_fields ~w(title)
+  @optional_fields ~w(order completed)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
