@@ -9,6 +9,7 @@ defmodule Todobackend.Router do
   end
 
   pipeline :api do
+    plug :cors
     plug :accepts, ["json"]
   end
 
@@ -22,5 +23,15 @@ defmodule Todobackend.Router do
   scope "/api", Todobackend do
     pipe_through :api
     resources "/todos", TodoController
+    options "/todos", TodoController, :options
+    options "/todos/:id", TodoController, :options
   end
+
+  def cors(conn, _opts) do
+    conn
+    |> put_resp_header("Access-Control-Allow-Origin", "*")
+    |> put_resp_header("Access-Control-Allow-Headers", "Content-Type")
+    |> put_resp_header("Access-Control-Allow-Methods", "GET,PUT,PATCH,OPTIONS,DELETE,POST")
+  end
+
 end
